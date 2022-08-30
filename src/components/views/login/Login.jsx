@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 import { useLocalStorage } from '../../../hooks/useLocalStorage';
+import LoginForm from '../../loginForm/LoginForm';
 import moonImg from '../../../assets/img/pure-moon.webp';
 
 export default function Login() {
@@ -22,6 +23,9 @@ export default function Login() {
     setIsLogged(false);
     navigate('/login', { replace: true });
   };
+  const btnLoader = loginForm => {
+    loginForm.current.addEventListener('submit',)
+  }
 
   useEffect(() => {
     let form = loginForm.current;
@@ -60,7 +64,7 @@ export default function Login() {
       <div className="mid-right md:w-1/2 hidden md:block">
         <img src={moonImg} alt="Image Login" className="fixed md:-top-1/4 lg:-top-1/3 lg:-right-36 lg:w-2/4" />
       </div>
-      <div className="form-center md:bg-white w-full md:w-2/3 lg:w-1/3 p-4 absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 md:border rounded md:shadow-xl">
+      {/* <div className="form-center md:bg-white w-full md:w-2/3 lg:w-1/3 p-4 absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 md:border rounded md:shadow-xl">
         <p className="text-4xl text-center md:text-xl font-bold mb-4 capitalize">Login</p>
         <form ref={loginForm}>
           <div className="mb-6">
@@ -120,7 +124,8 @@ export default function Login() {
             <span className="text-sm font-bold capitalize"><Link to="/forgot-password">Forgot Password?</Link></span>
           </div>
         </form>
-      </div>
+      </div> */}
+      <LoginForm form={loginForm} email={email} password={password} />
     </div>
   );
 }
